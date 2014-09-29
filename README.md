@@ -57,8 +57,7 @@ This outputs ...
 { "_ID": "22", "ROW": "5", "LRB": "L+R+X", "XYZ": "b" }
 ```
 
-We can pipe these records to `validate-ndj` and check to see if any records
-fail to meet our specified field constraints (`rec.constraints.js`):
+We can pipe these records to `validate-ndj` and check to see if any records fail to meet our specified field constraints ([`rec.constraints.js`](rec.constaints.js)):
 
     xlsx2ndj --sheet=Transcript sample.xlsx | \
       validate-ndj --constraints=rec.constraints.js
