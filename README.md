@@ -69,3 +69,9 @@ This outputs ...
 { "index": 3, "errors": [ "XYZ = `q` is an invalid value"] }
 { "index": 4, "errors": [ "LRB = `L+R+X` is an invalid value", "XYZ = `b` is an invalid value" ] }
 ```
+
+
+## See Also
+
+* [`parse-xlsx`](https://github.com/joyrexus/parse-xlsx) - parse excel worksheets with column headers
+* [`valid-xlsx`](https://github.com/joyrexus/valid-xlsx) - validate values in columns of an excel worksheet
