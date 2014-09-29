@@ -1,9 +1,8 @@
 # valid-records
 
-A simple module and CLI for validation reporting on specified fields within a
-set of records.
+A simple module and CLI (`validate-ndj`) for validation reporting on specified fields within a set of records.
 
-Records:
+Sample records:
 
 ```javascript
 { row: 1, X: 'x1', Y: 'y1', Z: 'z1' }
@@ -11,7 +10,7 @@ Records:
 { row: 3, X: 'x3', Y: 'y3', Z: 'z3' }
 ```
 
-A validation constraint:
+A validation constraint for field **X**:
 
 ```javascript
 X: function(value) {
@@ -25,7 +24,7 @@ X: function(value) {
 ```
 
 The CLI is designed to validate newline-delimited JSON (e.g., [`records.ndj`](records.ndj)) from [**stdout**](http://en.wikipedia.org/wiki/Standard_streams).  You just pass 
-in a file containing your field constraint functions:
+in a file containing your field constraint functions (e.g., [`rec.constraints.js`](rec.constraints.js):
 
     cat records.ndj | validate-ndj --constraints=rec.constraints.js
 
@@ -42,7 +41,7 @@ in a file containing your field constraint functions:
 
 Suppose we have an excel file (`sample.xlsx`) ...
 
-![sample file](sample.png)
+![sample file](records.png)
 
 We can convert the displayed worksheet (named **Transcript**) to newline-delimited JSON with [`xlsx2ndj`](https://github.com/joyrexus/parse-xlsx):
 
