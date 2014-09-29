@@ -1,10 +1,10 @@
 {
   "name": "valid-records",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "validate field values of a set of records (js objects or newline-delimited json)",
   "main": "index.js",
   "bin": {
-    "validate-ndj": "validate-ndj.js"
+    "validate-ndj": "bin/validate-ndj.js"
   },
   "dependencies": {
     "ndjson": "~1.2.2",
