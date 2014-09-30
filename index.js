@@ -10,8 +10,8 @@
         this.report = { 
             invalid: 0,     // total invalid records
             errors: {}      // errors keyed by record number
-        }
-    }
+        };
+    };
 
 
     Validator.prototype.validateRec = function(rec) {
@@ -27,7 +27,7 @@
         }
 
         if (errors.length) { return errors }   // undefined unless errors
-    }
+    };
 
 
     Validator.prototype.validate = function(records) {
@@ -48,7 +48,7 @@
             } 
         }
         return this;
-    }
+    };
 
 
     Validator.prototype.printReport = function() {
@@ -65,7 +65,7 @@
                 console.log("  " + err);
             }
         }
-    }
+    };
 
     module.exports = Validator;
 })();

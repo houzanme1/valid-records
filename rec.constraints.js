@@ -3,7 +3,7 @@ invalidReply = function(col, val, reason) {
 
     value = '`' + val + '`';
     return [col, '=', value, reason].join(' ');
-}
+};
 
 
 // column pattern constraints
@@ -29,4 +29,4 @@ module.exports = {
             }
         }
     }
-}
+};
