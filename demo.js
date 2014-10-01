@@ -12,7 +12,7 @@ var report = [];   // log of invalid records
 
 fs.createReadStream(dataFile)
     .pipe(ndj.parse())  
-    .on('data', function(rec) {
+    .on('data', function (rec) {
         var err = valid.validateRec(rec)
         if (err) { 
             report.push({ index: i, errors: err }) 

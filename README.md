@@ -13,7 +13,7 @@ Sample records:
 A validation constraint for field **X**:
 
 ```javascript
-X: function(value) {
+X: function (value) {
     column = 'X';
     if (value) {
         if (!/^x\d*$/.test(value)) {

@@ -1,9 +1,9 @@
 var test = require('tape');
 var check = require('rec.constraints');
 
-test('column constraints', function(t) {
+test('column constraints', function (t) {
 
-    test('LRB column constraints', function(t) {
+    test('LRB column constraints', function (t) {
 
         t.equal(check.LRB(''), undefined, "permit empty strings");
         t.equal(check.LRB('X'), 'LRB = `X` is an invalid value');
@@ -45,7 +45,7 @@ test('column constraints', function(t) {
 });
 
 
-test('validate method', function(t) {
+test('validate method', function (t) {
 
     var Validator = require('./');
     var valid = new Validator(check);

@@ -1,5 +1,5 @@
 // helper function to format reply for invalid values
-invalidReply = function(col, val, reason) {
+invalidReply = function (col, val, reason) {
 
     value = '`' + val + '`';
     return [col, '=', value, reason].join(' ');
@@ -9,7 +9,7 @@ invalidReply = function(col, val, reason) {
 // column pattern constraints
 module.exports = {
 
-    LRB: function(v) {
+    LRB: function (v) {
 
         column = 'LRB';
         if (v) {
@@ -20,7 +20,7 @@ module.exports = {
     },
 
 
-    XYZ: function(v) {
+    XYZ: function (v) {
 
         column = 'XYZ';
         if (v) {

@@ -1,6 +1,6 @@
-(function() {
+(function () {
 
-    function Validator(constraints) {
+    var Validator = function (constraints) {
 
         if (typeof constraints === 'string') {
             constraints = require(constraints);
@@ -14,7 +14,7 @@
     };
 
 
-    Validator.prototype.validateRec = function(rec) {
+    Validator.prototype.validateRec = function (rec) {
 
         var errors = [];
 
@@ -30,7 +30,7 @@
     };
 
 
-    Validator.prototype.validate = function(records) {
+    Validator.prototype.validate = function (records) {
 
         this.records = records;
         for (var i = 0, len = records.length; i < len; i++) {
@@ -51,7 +51,7 @@
     };
 
 
-    Validator.prototype.printReport = function() {
+    Validator.prototype.printReport = function () {
 
         console.log(this.report.invalid + " invalid values");
         for (var num in this.report.errors) {
