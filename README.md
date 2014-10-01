@@ -8,25 +8,29 @@ Sample records:
 { row: 1, X: 'x1', Y: 'y1', Z: 'z1' }
 { row: 2, X: 'x2', Y: 'y2', Z: 'z2' }
 { row: 3, X: 'x3', Y: 'y3', Z: 'z3' }
+{ row: 4, X: 'OH NOES!', Y: 'y4', Z: 'z4' }
 ```
 
-A validation constraint for field **X**:
+A simple schema containing one validation constraint for field **X**:
 
 ```javascript
-X: function (value) {
-    column = 'X';
-    if (value) {
-        if (!/^x\d*$/.test(value)) {
-            return value + ' is an invalid value for X';
+var schema = {
+
+    X: function (value) {
+        column = 'X';
+        if (value) {
+            if (!/^x\d*$/.test(value)) {
+                return value + ' is an invalid value for X';
+            }
         }
     }
 }
 ```
 
 The CLI is designed to validate newline-delimited JSON (e.g., [`records.ndj`](records.ndj)) from [**stdout**](http://en.wikipedia.org/wiki/Standard_streams).  You just pass 
-in a file containing your field constraint functions (e.g., [`rec.constraints.js`](rec.constraints.js):
+in a file containing your validation schema (e.g., [`rec.schema.js`](rec.schema.js):
 
-    cat records.ndj | validate-ndj --constraints=rec.constraints.js
+    cat records.ndj | valid-records --schema=rec.schema.js
 
 
 ## Usage
@@ -57,10 +61,10 @@ This outputs ...
 { "_ID": "22", "ROW": "5", "LRB": "L+R+X", "XYZ": "b" }
 ```
 
-We can pipe these records to `valid-records` and check to see if any records fail to meet our specified field constraints ([`rec.constraints.js`](rec.constaints.js)):
+We can pipe these records to `valid-records` and check to see if any records fail to meet our specified field constraints ([`rec.schema.js`](rec.schema.js)):
 
     parse-xl --sheet=Transcript sample.xlsx | \
-        valid-records --constraints=rec.constraints.js
+        valid-records --schema=rec.schema.js
 
 This outputs ...
 

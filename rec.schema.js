@@ -8,7 +8,7 @@ var invalidReply = function (col, val, reason) {
 };
 
 
-// column pattern constraints
+// specify your schema: constraints for particular columns
 module.exports = {
 
     LRB: function (v) {

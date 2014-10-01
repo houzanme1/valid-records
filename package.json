@@ -4,7 +4,7 @@
   "description": "validate field values of a set of records (js objects or newline-delimited json)",
   "main": "index.js",
   "bin": {
-    "validate-ndj": "bin/validate-ndj.js"
+    "valid-records": "bin/valid-records.js"
   },
   "dependencies": {
     "ndjson": "~1.2.2",
@@ -15,7 +15,7 @@
   "scripts": {
     "test": "node test.js",
     "demo": "cat records.ndj; node demo.js",
-    "cli-demo": "bin/validate-ndj.js --constraints=rec.constraints.js < records.ndj"
+    "cli-demo": "bin/valid-records.js --schema=rec.schema.js < records.ndj"
   },
   "repository": {
     "type": "git",

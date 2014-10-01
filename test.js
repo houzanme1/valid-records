@@ -1,10 +1,10 @@
 'use strict';
 
 var test = require('tape'),
-    check = require('rec.constraints');
+    check = require('rec.schema');
 
 
-test('column constraints', function (t) {
+test('schema', function (t) {
 
     test('LRB column constraints', function (t) {
 
@@ -52,7 +52,7 @@ test('column constraints', function (t) {
 });
 
 
-test.skip('validate method', function (t) {
+test('validate', function (t) {
 
     var records = [
             {"_ID": "22", "ROW": "1", "LRB": "L", "XYZ": "x"},

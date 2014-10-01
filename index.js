@@ -2,12 +2,12 @@
 
 (function () {
 
-    var Validator = function (constraints) {
+    var Validator = function (schema) {
 
-        if (typeof constraints === 'string') {
-            constraints = require(constraints);
+        if (typeof schema === 'string') {
+            schema = require(schema);
         }
-        this.constraints = constraints;
+        this.schema = schema;
         this.records = [];
         this.report = {
             invalid: 0,     // total invalid records
@@ -23,9 +23,9 @@
             value,
             error;
 
-        for (field in this.constraints) {
+        for (field in this.schema) {
             value = rec[field];
-            error = this.constraints[field](value);
+            error = this.schema[field](value);
             if (error) {
                 errors.push(error);
             }
@@ -49,7 +49,7 @@
                 if (!this.report.errors.hasOwnProperty(i)) {
                     this.report.errors[i] = [];
                 }
-                for (j = 0, jl = errors.length; j < jl; ++i) {
+                for (j = 0, jl = errors.length; j < jl; ++j) {
                     this.report.errors[i].push(errors[j]);
                 }
             }

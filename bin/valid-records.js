@@ -6,8 +6,14 @@ var ndj = require('ndjson'),
     argv = require('minimist')(process.argv.slice(2)),
     Validator = require('../');
 
-var valid = new Validator(argv.constraints),
+if (!argv.schema) {
+    var usage = 'valid-records --schema=your.schema.js < records.ndj';
+    console.log(usage);
+}
+
+var valid = new Validator(argv.schema),
     i = 0;
+
 
 var invalidFilter = thru.obj(function (rec, enc, next) {
 

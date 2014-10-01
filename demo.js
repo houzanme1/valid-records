@@ -5,8 +5,8 @@ var fs = require('fs'),
     Validator = require('./');
 
 var dataFile = './records.ndj',
-    constraints = './rec.constraints.js',
-    valid = new Validator(constraints);
+    schema = './rec.schema.js',
+    valid = new Validator(schema);
 
 var i = 0,
     report = [];   // log of invalid records
