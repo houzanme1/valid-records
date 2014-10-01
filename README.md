@@ -43,9 +43,9 @@ Suppose we have an excel file (`sample.xlsx`) ...
 
 ![sample file](records.png)
 
-We can convert the displayed worksheet (named **Transcript**) to newline-delimited JSON with [`xlsx2ndj`](https://github.com/joyrexus/parse-xlsx):
+We can convert the displayed worksheet (named **Transcript**) to newline-delimited JSON with [`parse-xl`](https://github.com/joyrexus/parse-xl):
 
-    xlsx2ndj --sheet=Transcript sample.xlsx 
+    parse-xl --sheet=Transcript sample.xlsx 
 
 This outputs ...
 
@@ -57,10 +57,10 @@ This outputs ...
 { "_ID": "22", "ROW": "5", "LRB": "L+R+X", "XYZ": "b" }
 ```
 
-We can pipe these records to `validate-ndj` and check to see if any records fail to meet our specified field constraints ([`rec.constraints.js`](rec.constaints.js)):
+We can pipe these records to `valid-records` and check to see if any records fail to meet our specified field constraints ([`rec.constraints.js`](rec.constaints.js)):
 
-    xlsx2ndj --sheet=Transcript sample.xlsx | \
-      validate-ndj --constraints=rec.constraints.js
+    parse-xl --sheet=Transcript sample.xlsx | \
+        valid-records --constraints=rec.constraints.js
 
 This outputs ...
 
@@ -73,5 +73,5 @@ This outputs ...
 
 ## See Also
 
-* [`parse-xlsx`](https://github.com/joyrexus/parse-xlsx) - parse excel worksheets with column headers
-* [`valid-xlsx`](https://github.com/joyrexus/valid-xlsx) - validate values in columns of an excel worksheet
+* [`parse-xl`](https://github.com/joyrexus/parse-xl) - parse excel worksheets with column headers
+* [`valid-xl`](https://github.com/joyrexus/valid-xl) - validate values in columns of an excel worksheet

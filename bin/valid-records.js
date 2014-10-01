@@ -1,11 +1,13 @@
 #!/usr/bin/env node 
-var ndj = require('ndjson');
-var thru = require('through2');
-var argv = require('minimist')(process.argv.slice(2))
-var Validator = require('../');
+'use strict';
 
-var valid = new Validator(argv.constraints);
-var i = 0;
+var ndj = require('ndjson'),
+    thru = require('through2'),
+    argv = require('minimist')(process.argv.slice(2)),
+    Validator = require('../');
+
+var valid = new Validator(argv.constraints),
+    i = 0;
 
 var invalidFilter = thru.obj(function (rec, enc, next) {
 
@@ -13,7 +15,7 @@ var invalidFilter = thru.obj(function (rec, enc, next) {
     if (errors) {
         this.push({ index: i, errors: errors });
     }
-    i++
+    i++;
     next();
 });
 
