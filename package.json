@@ -1,6 +1,6 @@
 {
   "name": "valid-records",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "validate field values of a set of records (js objects or newline-delimited json)",
   "main": "index.js",
   "bin": {
