@@ -1,3 +1,5 @@
+'use strict';
+
 (function () {
 
     var Validator = function (constraints) {
@@ -7,7 +9,7 @@
         }
         this.constraints = constraints;
         this.records = [];
-        this.report = { 
+        this.report = {
             invalid: 0,     // total invalid records
             errors: {}      // errors keyed by record number
         };
@@ -16,36 +18,41 @@
 
     Validator.prototype.validateRec = function (rec) {
 
-        var errors = [];
+        var errors = [],
+            field,
+            value,
+            error;
 
-        for (var field in this.constraints) {
-            var value = rec[field];
-            var error = this.constraints[field](value);
+        for (field in this.constraints) {
+            value = rec[field];
+            error = this.constraints[field](value);
             if (error) {
                 errors.push(error);
-            } 
+            }
         }
 
-        if (errors.length) { return errors }   // undefined unless errors
+        if (errors.length) { return errors; }   // undefined unless errors
     };
 
 
     Validator.prototype.validate = function (records) {
 
+        var rec, errors, invalid, i, il, j, jl;
         this.records = records;
-        for (var i = 0, len = records.length; i < len; i++) {
-            var rec = records[i];
-            var errors = this.validateRec(rec);
-            var invalid = errors ? errors.length : 0;
-            if (invalid != 0) {
-                this.report.invalid += invalid
-                if (! this.report.errors.hasOwnProperty(i)) {
+
+        for (i = 0, il = records.length; i < il; ++i) {
+            rec = records[i];
+            errors = this.validateRec(rec);
+            invalid = errors ? errors.length : 0;
+            if (invalid !== 0) {
+                this.report.invalid += invalid;
+                if (!this.report.errors.hasOwnProperty(i)) {
                     this.report.errors[i] = [];
                 }
-                for (var _i = 0, _len = errors.length; _i < _len; _i++) {
-                    this.report.errors[i].push(errors[_i]);
+                for (j = 0, jl = errors.length; j < jl; ++i) {
+                    this.report.errors[i].push(errors[j]);
                 }
-            } 
+            }
         }
         return this;
     };
@@ -53,19 +60,21 @@
 
     Validator.prototype.printReport = function () {
 
+        var num, error, i, il;
+
         console.log(this.report.invalid + " invalid values");
-        for (var num in this.report.errors) {
+
+        for (num in this.report.errors) {
             error = this.report.errors[num];
             console.log("\nREC " + num + ":");
-            for (var i = 0; i < error.length; i++) {
-                var err = error[i];
-                if (typeof err != 'string') {
-                    err = JSON.stringify(error[i]);
+            for (i = 0, il = error.length; i < il; ++i) {
+                if (typeof error[i] !== 'string') {
+                    console.log(JSON.stringify(error[i]));
                 }
-                console.log("  " + err);
+                console.log("  " + error[i]);
             }
         }
     };
 
     module.exports = Validator;
-})();
+}());
